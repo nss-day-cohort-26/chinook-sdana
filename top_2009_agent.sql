@@ -2,7 +2,7 @@
 --Hint: Use the MAX function on a subquery.
 SELECT Rep, MAX(Sales)
 
-FROM (SELECT Employee.FirstName || " " || Employee.LastName AS 'Rep', COUNT(Invoice.InvoiceId) AS 'Sales' FROM Invoice
+FROM (SELECT Employee.FirstName || " " || Employee.LastName AS 'Rep', SUM(Invoice.Total) AS 'Sales' FROM Invoice
 JOIN Customer ON Invoice.CustomerId = Customer.CustomerId
 JOIN Employee ON Customer.SupportRepId = Employee.EmployeeId
 WHERE Invoice.InvoiceDate LIKE '%2009%'
